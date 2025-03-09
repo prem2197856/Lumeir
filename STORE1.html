@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lumeir - Luxury Redefined. Explore our collection of premium bags and accessories.">
+    <meta name="keywords" content="luxury bags, premium accessories, Lumeir, luxury redefined">
+    <title>Lumeir - Luxury Redefined</title>
+    <style>
+        :root {
+            --dark-bg: #1a1a2e;
+            --dark-text: #fff;
+            --primary-color: #b88e2f;
+            --secondary-color: #d4af37;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            transition: all 0.3s ease;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+        #logo {
+            width: 180px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the buttons */
+            flex-grow: 1; /* Allow the nav to take available space */
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--dark-text);
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        .hero {
+            width: 100%;
+            height: 90vh;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+        .hero h1 {
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--dark-text);
+        }
+        .hero button {
+            background: var(--primary-color);
+            color: var(--dark-text);
+            padding: 15px 40px;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .hero button:hover {
+            background: #926f1e;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 100px 50px;
+            background: var(--dark-bg);
+        }
+        .product {
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        .product h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin: 15px 0 5px;
+            color: var(--secondary-color);
+        }
+        .product p {
+            color: #ccc;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .product button {
+            background: none;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .product button:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0a0a0a;
+            color: var(--dark-text);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <header id="navbar">
+        <img src="https://media-hosting.imagekit.io/61e4cfda612b42a4/lumeir12-removebg-previewh.png?Expires=1836060214&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ficV17-A4TNOTBVt4VO76P02vN5JYZpWv-66gIq0-trWYY8nlrk9s4itWgnCtm7Jxys4ueSwDBuFzeh6k6a~iE~gxjTqchOqBeJX2i90WaOf18T5oG6e4TKEC0rBjbwZOchB3RhgtipVyGyfjE2~gbr6--D8QVEFfeN17FD4tWmD2SG8lYwE9dPnfxOZMqP-KulJLT6MM6hMnzlW84xffT6lGRY4-A1ay0727U3xp2KqGeJQedfN5FuC5lAJEiCawE5aW71XLiHcTPhX-Jj3n1YwjYvhKS3xeeQTELh5UUaAUKinyNwM0MSrYwVhonH0pHPhU8oQQ09f~fKlngCjbQ__" alt="Lumeir Logo" id="logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <div>
+            <h1>Lumeir</h1>
+            <p>Luxury Redefined</p>
+            <button>Explore Collection</button>
+        </div>
+    </div>
+    <div class="products">
+        <div class="product">
+            <img src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg" alt="Velvet Tote">
+            <h3>Velvet Tote</h3>
+            <p>$799.99</p>
+            <button onclick="createOrder(1, 1)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d" alt="Leather Satchel">
+            <h3>Leather Satchel</h3>
+            <p>$1,299.99</p>
+            <button onclick="createOrder(2, 1)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://images.pexels.com/photos/1370384/pexels-photo-1370384.jpeg" alt="Suede Clutch">
+            <h3>Suede Clutch</h3>
+            <p>$599.99</p>
+            <button onclick="createOrder(3, 1)">Add to Cart</button>
+        </div>
+    </div>
+    <footer>
+        © 2025 Lumeir. All Rights Reserved.
+    </footer>
+
+    <!-- Printify SDK -->
+    <script src="https://app.printify.com/v1/js/sdk.js"></script>
+    <script>
+        const shopId = '21161221'; // Your provided shop ID
+        const apiToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzN2Q0YmQzMDM1ZmUxMWU5YTgwM2FiN2VlYjNjY2M5NyIsImp0aSI6IjI5MTFlYWY1YjM5ZmY4NGU0ZjQ5MDNlOWE4YzU5MWRmZWFmMWM0ZjRiM2ZhMzIyNjQ5ODFhYzUwNjFiZTZhZjk5ZGZhOTlmZjk4YWRhMGFkIiwiaWF0IjoxNzQxNDk4ODM5Ljc4NDE4MywibmJmIjoxNzQxNDk4ODM5Ljc4NDE4NCwiZXhwIjoxNzczMDM0ODM5Ljc3NzMyMSwic3ViIjoiMjExOTgxNzMiLCJzY29wZXMiOlsic2hvcHMubWFuYWdlIiwic2hvcHMucmVhZCIsImNhdGFsb2cucmVhZCIsIm9yZGVycy5yZWFkIiwib3JkZXJzLndyaXRlIiwicHJvZHVjdHMucmVhZCIsInByb2R1Y3RzLndyaXRlIiwid2ViaG9va3MucmVhZCIsIndlYmhvb2tzLndyaXRlIiwidXBsb2Fkcy5yZWFkIiwidXBsb2Fkcy53cml0ZSIsInByaW50X3Byb3ZpZGVycy5yZWFkIiwidXNlci5pbmZvIl19.AQ9myeVeiYEpRkNWCDkE7IfkQBDWTysE1lP4Fp1DSSxvfMhs-wCBWtJpmJsVjtjCd0xSsae-MvPfJqSvYwo';
+
+        Printify.init({
+            shopId: shopId,
+            apiKey: apiToken
+        });
+
+        function createProduct() {
+            const productData = {
+                title: 'Custom T-Shirt',
+                print_provider_id: 1, // Replace with your actual print provider ID
+                print_areas: [
+                    {
+                        variant_ids: [1], // Replace with your actual variant IDs
+                        preview_image: 'URL_TO_PREVIEW_IMAGE', // Replace with the URL to your preview image
+                        print_area: {
+                            height: 10, // Replace with the height of the print area
+                            width: 10, // Replace with the width of the print area
+                            position_x: 5, // Replace with the X position of the print area
+                            position_y: 5, // Replace with the Y position of the print area
+                            rotation: 0 // Replace with the rotation of the print area
+                        }
+                    }
+                ]
+            };
+
+            Printify.createProduct(productData, function(response) {
+                console.log('Product created:', response);
+            }, function(error) {
+                console.error('Error creating product:', error);
+            });
+        }
+
+        function createOrder(productId, quantity) {
+            const orderData = {
+                line_items: [
+                    {
+                        product_id: productId,
+                        quantity: quantity
+                    }
+                ],
+                shipping_method: 0, // Replace with your actual shipping method ID
+                send_shipping_notification: true
+            };
+
+            Printify.createOrder(orderData, function(response) {
+                console.log('Order created:', response);
+                alert('Order created successfully!');
+            }, function(error) {
+                console.error('Error creating order:', error);
+                alert('Failed to create order. Please try again.');
+            });
+        }
+
+        // Call the function to create a product (if needed)
+        // createProduct();
+    </script>
+</body>
+</html>
