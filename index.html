@@ -175,66 +175,50 @@
         © 2025 Lumeir. All Rights Reserved.
     </footer>
 
-    <!-- Printify SDK -->
-    <script src="https://app.printify.com/v1/js/sdk.js"></script>
     <script>
-        const shopId = '21161221'; // Your provided shop ID
-        const apiToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzN2Q0YmQzMDM1ZmUxMWU5YTgwM2FiN2VlYjNjY2M5NyIsImp0aSI6IjI5MTFlYWY1YjM5ZmY4NGU0ZjQ5MDNlOWE4YzU5MWRmZWFmMWM0ZjRiM2ZhMzIyNjQ5ODFhYzUwNjFiZTZhZjk5ZGZhOTlmZjk4YWRhMGFkIiwiaWF0IjoxNzQxNDk4ODM5Ljc4NDE4MywibmJmIjoxNzQxNDk4ODM5Ljc4NDE4NCwiZXhwIjoxNzczMDM0ODM5Ljc3NzMyMSwic3ViIjoiMjExOTgxNzMiLCJzY29wZXMiOlsic2hvcHMubWFuYWdlIiwic2hvcHMucmVhZCIsImNhdGFsb2cucmVhZCIsIm9yZGVycy5yZWFkIiwib3JkZXJzLndyaXRlIiwicHJvZHVjdHMucmVhZCIsInByb2R1Y3RzLndyaXRlIiwid2ViaG9va3MucmVhZCIsIndlYmhvb2tzLndyaXRlIiwidXBsb2Fkcy5yZWFkIiwidXBsb2Fkcy53cml0ZSIsInByaW50X3Byb3ZpZGVycy5yZWFkIiwidXNlci5pbmZvIl19.AQ9myeVeiYEpRkNWCDkE7IfkQBDWTysE1lP4Fp1DSSxvfMhs-wCBWtJpmJsVjtjCd0xSsae-MvPfJqSvYwo';
+        const apiKey = '8HdoZzHHyD9ajrlSDhALfa1BfRNXVX3yPAsA7zP5'; // Your provided Printful API key
 
-        Printify.init({
-            shopId: shopId,
-            apiKey: apiToken
-        });
-
-        function createProduct() {
-            const productData = {
-                title: 'Custom T-Shirt',
-                print_provider_id: 1, // Replace with your actual print provider ID
-                print_areas: [
+        async function createOrder(productId, quantity) {
+            const orderData = {
+                recipient: {
+                    address1: "123 Main St",
+                    city: "Anytown",
+                    state_code: "CA",
+                    country_code: "US",
+                    zip: "90210"
+                },
+                items: [
                     {
-                        variant_ids: [1], // Replace with your actual variant IDs
-                        preview_image: 'URL_TO_PREVIEW_IMAGE', // Replace with the URL to your preview image
-                        print_area: {
-                            height: 10, // Replace with the height of the print area
-                            width: 10, // Replace with the width of the print area
-                            position_x: 5, // Replace with the X position of the print area
-                            position_y: 5, // Replace with the Y position of the print area
-                            rotation: 0 // Replace with the rotation of the print area
-                        }
+                        quantity: quantity,
+                        external_variant_id: productId
                     }
                 ]
             };
 
-            Printify.createProduct(productData, function(response) {
-                console.log('Product created:', response);
-            }, function(error) {
-                console.error('Error creating product:', error);
-            });
-        }
+            try {
+                const response = await fetch('https://api.printful.com/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify(orderData)
+                });
 
-        function createOrder(productId, quantity) {
-            const orderData = {
-                line_items: [
-                    {
-                        product_id: productId,
-                        quantity: quantity
-                    }
-                ],
-                shipping_method: 0, // Replace with your actual shipping method ID
-                send_shipping_notification: true
-            };
-
-            Printify.createOrder(orderData, function(response) {
-                console.log('Order created:', response);
-                alert('Order created successfully!');
-            }, function(error) {
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Order created:', result);
+                    alert('Order created successfully!');
+                } else {
+                    const error = await response.json();
+                    console.error('Error creating order:', error);
+                    alert('Failed to create order. Please try again.');
+                }
+            } catch (error) {
                 console.error('Error creating order:', error);
                 alert('Failed to create order. Please try again.');
-            });
+            }
         }
-
-        // Call the function to create a product (if needed)
-        // createProduct();
     </script>
 </body>
 </html>
